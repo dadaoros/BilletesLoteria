@@ -1,8 +1,10 @@
 package com.example.root.billetesloteria;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -13,11 +15,12 @@ import Models.Ticket;
 /**
  * Created by root on 6/10/14.
  */
-public class TicketListAdapter extends BaseAdapter {
+public class TicketListAdapter extends ArrayAdapter {
     ArrayList<Ticket> tickets;
-    LayoutInflater lInflater;
-    public TicketListAdapter(ArrayList<Ticket> tickets, LayoutInflater inflater) {
-        this.lInflater=inflater;
+    Activity ctxt;
+    public TicketListAdapter(ArrayList<Ticket> tickets, Activity ctxt) {
+        super(ctxt,R.layout.listview_item,tickets);
+        this.ctxt=ctxt;
         this.tickets=tickets;
     }
 
@@ -38,7 +41,7 @@ public class TicketListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        view=lInflater.inflate(R.layout.listview_item,null);
+        view=ctxt.getLayoutInflater().inflate(R.layout.listview_item,null);
         TextView nombreLoteria= (TextView) view.findViewById(R.id.title);
         TextView numeroLoteria= (TextView) view.findViewById(R.id.l_number);
         TextView numeroSerie= (TextView) view.findViewById(R.id.l_series);

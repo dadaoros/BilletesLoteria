@@ -68,5 +68,6 @@ public class AddTicketFragment extends Fragment implements View.OnClickListener 
         // TODO: Modificar la fecha
         Date date=new Date();
         Ticket ticket = new Ticket(sLotery,sNumber,sSeries, date);
+
     }
 }

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
     private ImageButton btnAddTicket, btnDelTicket, btnListTickets;
     private AddTicketFragment addTicketF;
     private ListTicketFragment listTicketF;
-    private ArrayList<Ticket> arrayTickets= new ArrayList<Ticket>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
