@@ -4,6 +4,7 @@ package com.example.root.billetesloteria;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -67,7 +68,8 @@ public class AddTicketFragment extends Fragment implements View.OnClickListener 
     private void saveTicket(String sLotery, String sNumber, String sSeries) {
         // TODO: Modificar la fecha
         Date date=new Date();
-        Ticket ticket = new Ticket(sLotery,sNumber,sSeries, date);
+        Ticket nTicket = new Ticket(sLotery,sNumber,sSeries, date);
+        Intent intent = new Intent();
 
     }
 }

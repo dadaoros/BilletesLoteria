@@ -22,7 +22,7 @@ import Models.Ticket;
 public class ListTicketFragment extends Fragment {
 
     ArrayAdapter<Ticket> listAdapter;
-    ListView ticketList;
+    ListView ticketListView;
 
     public ListTicketFragment() {
         // Required empty public constructor
@@ -44,8 +44,9 @@ public class ListTicketFragment extends Fragment {
     }
 
     private void initComponents(View v) {
-        ticketList = (ListView)v.findViewById(R.id.list_view);
+        ticketListView = (ListView)v.findViewById(R.id.list_view);
         listAdapter=new TicketListAdapter(new ArrayList<Ticket>(),getActivity());
+        ticketListView.setAdapter(listAdapter);
     }
 
 
