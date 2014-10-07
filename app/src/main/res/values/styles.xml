@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/DarkBars</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="TabbedButton">
+        <item name="android:background" >@color/dark_style</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_width">0sp</item>
+    </style>
+    <style name="DarkBars">
+        <item name="android:background">@color/dark_style</item>
+    </style>
+
+</resources>
