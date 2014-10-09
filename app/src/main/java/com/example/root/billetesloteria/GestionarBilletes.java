@@ -4,16 +4,20 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Build;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 
@@ -27,7 +31,20 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
     private ImageButton btnAddTicket, btnDelTicket, btnListTickets;
     private AddTicketFragment addTicketF;
     private ListTicketFragment listTicketF;
+    private TicketListAdapter listAdapter;
+    TicketReceiver receiver;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        receiver = new TicketReceiver(listAdapter);
+        registerReceiver(receiver, new IntentFilter(TicketReceiver.FILTER_NAME));
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +54,7 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
         initActionBar();
     }
 
+
     private void initComponents(){
         btnAddTicket= (ImageButton)findViewById(R.id.add_ticket);
         btnAddTicket.setOnTouchListener(this);
@@ -44,11 +62,12 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
         btnDelTicket.setOnTouchListener(this);
         btnListTickets= (ImageButton)findViewById(R.id.ticket_list);
         btnListTickets.setOnTouchListener(this);
-
+        listAdapter = new TicketListAdapter(new ArrayList<Ticket>(),this);
         loadFragment(getListTicketF());
     }
 
     //creamos un metodo generico para cargar los fragmentos
+
     private void loadFragment(Fragment f) {
         FragmentManager fManager= getFragmentManager();
         android.app.FragmentTransaction transaction = fManager.beginTransaction();
@@ -110,8 +129,12 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
     private void changeFragment(View view) {
         switch (view.getId()){
             case R.id.add_ticket:loadFragment(getAddTicketF());break;
-            case R.id.ticket_list:loadFragment(getListTicketF());break;
+            case R.id.ticket_list:
+                loadFragment(getListTicketF());
+                listTicketF.setListAdapter(listAdapter);
+                break;
             //TODO: Terminar de Implementar switch case
         }
     }
+
 }

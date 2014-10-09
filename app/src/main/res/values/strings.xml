@@ -10,5 +10,6 @@
     <string name="btn_save">Guardar</string>
     <string name="btn_cancel">Cancelar</string>
     <string name="loteria">Loteria de Bogota</string>
+    <string name="t_ticket_list">Listado de Billetes</string>
 
 </resources>

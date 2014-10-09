@@ -41,7 +41,9 @@ public class TicketListAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        view=ctxt.getLayoutInflater().inflate(R.layout.listview_item,null);
+        if (view == null) {
+            view = ctxt.getLayoutInflater().inflate(R.layout.listview_item, null);
+        }
         TextView nombreLoteria= (TextView) view.findViewById(R.id.title);
         TextView numeroLoteria= (TextView) view.findViewById(R.id.l_number);
         TextView numeroSerie= (TextView) view.findViewById(R.id.l_series);
