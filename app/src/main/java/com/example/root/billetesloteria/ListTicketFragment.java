@@ -43,31 +43,35 @@ public class ListTicketFragment extends Fragment  {
     @Override
     public void onResume(){
         super.onResume();
-        listAdapter.setNotifyOnChange(true);
-        ticketListView.setAdapter(listAdapter);
-        Ticket t=null;
+        Log.w("Estado", "Working");
         try {
-            t = (Ticket) ticketListView.getAdapter().getItem(0);
-            Log.w("elemento 0",t.getLoteria());
+            Log.w("Frag.elementos:", "" + listAdapter.getCount());
         }catch(Exception e){
 
         }
+        updateList();
 
     }
+
+    private void updateList() {
+        if(listAdapter!=null) {
+            listAdapter.notifyDataSetChanged();
+            listAdapter.setNotifyOnChange(true);
+            ticketListView.setAdapter(listAdapter);
+        }
+    }
+
     @Override
     public void onPause() {
         super.onPause();
+        Log.w("Estado","Suspendido");
     }
     public void setListAdapter(ArrayAdapter<Ticket> listAdapter) {
         this.listAdapter = listAdapter;
-        listAdapter.setNotifyOnChange(true);
-        ticketListView.setAdapter(listAdapter);
     }
     private void initComponents(View v) {
         ticketListView = (ListView)v.findViewById(R.id.list_view);
-        listAdapter=new TicketListAdapter(new ArrayList<Ticket>(),getActivity());
-        listAdapter.setNotifyOnChange(true);
-        ticketListView.setAdapter(listAdapter);
+
     }
 
 }

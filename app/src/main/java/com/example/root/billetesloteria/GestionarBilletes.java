@@ -37,6 +37,11 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
     @Override
     public void onResume() {
         super.onResume();
+        try {
+            Log.w("Main.elementos:", "" + listAdapter.getCount());
+        }catch(Exception e){
+
+        }
         receiver = new TicketReceiver(listAdapter);
         registerReceiver(receiver, new IntentFilter(TicketReceiver.FILTER_NAME));
     }
@@ -131,6 +136,7 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
             case R.id.add_ticket:loadFragment(getAddTicketF());break;
             case R.id.ticket_list:
                 loadFragment(getListTicketF());
+                //envia el adaptador actualizado a la lista
                 listTicketF.setListAdapter(listAdapter);
                 break;
             //TODO: Terminar de Implementar switch case
