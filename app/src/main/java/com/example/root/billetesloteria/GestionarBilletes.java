@@ -1,9 +1,9 @@
 package com.example.root.billetesloteria;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.IntentFilter;
 import android.os.Build;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,11 +33,6 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
     @Override
     public void onResume() {
         super.onResume();
-        try {
-            Log.w("Main.elementos:", "" + listAdapter.getCount());
-        }catch(Exception e){
-
-        }
         receiver = new TicketReceiver(listAdapter);
         registerReceiver(receiver, new IntentFilter(TicketReceiver.FILTER_NAME));
     }
@@ -78,7 +73,7 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void initActionBar() {
-        actionBar=getActionBar();
+        actionBar=getSupportActionBar();
         actionBar.setHomeButtonEnabled(false);
     }
     //Empleamos una inicializacion por demanda
