@@ -3,29 +3,22 @@ package com.example.root.billetesloteria;
 
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
+
 import android.os.Build;
 import android.os.Bundle;
-
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
-
-
-import java.util.ArrayList;
 
 import Models.Ticket;
 
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class ListTicketFragment extends Fragment  {
+public class ListTicketFragment extends Fragment {
 
     //TODO: remover implement Onclick
     private ArrayAdapter<Ticket> listAdapter;

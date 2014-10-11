@@ -2,12 +2,8 @@ package com.example.root.billetesloteria;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Build;
-
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,10 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
-
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import java.util.ArrayList;
 
 import Models.Ticket;
@@ -74,8 +70,8 @@ public class GestionarBilletes extends ActionBarActivity implements View.OnTouch
     //creamos un metodo generico para cargar los fragmentos
 
     private void loadFragment(Fragment f) {
-        FragmentManager fManager= getFragmentManager();
-        android.app.FragmentTransaction transaction = fManager.beginTransaction();
+        FragmentManager fManager= getSupportFragmentManager();
+        FragmentTransaction transaction = fManager.beginTransaction();
         transaction.replace(R.id.container,f);
         transaction.commit();
     }
